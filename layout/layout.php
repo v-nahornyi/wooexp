@@ -302,6 +302,14 @@ function get_order_export_layout() {
                     .prependTo(td)
                     .find('.acf-label').text('Order notes: ');
 
+                const sales_person = $('.address + .edit_address + div:last-child');
+                if (sales_person.length) {
+                    $(`<h3></h3>`)
+                        .addClass('sales woocommerce-order-data__heading')
+                        .text(sales_person[0].innerText)
+                        .appendTo(td);
+                }
+
                 /**
                  * Add customer details to export layout
                  */
@@ -335,7 +343,7 @@ function get_order_export_layout() {
                  * Clear layout to leave only product data in product section
                  */
                 targetEl
-                    .find('.postbox-header, thead, .button, p:not(.wrap_note_item), .wc-order-refund-items, #order_line_items')
+                    .find('.postbox-header, thead, .button, p:not(.wrap_note_item, .sales > p), .wc-order-refund-items, #order_line_items')
                     .remove();
 
                 targetEl.find('.wc-order-totals-items, #order_shipping_line_items, #order_fee_line_items, #order_refunds, .wc-order-add-item, .wc-order-bulk-actions, script')
