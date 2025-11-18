@@ -132,7 +132,8 @@ function get_order_export_layout() {
             .wooexp-customer,
             .wooexp-body-covered .woocommerce-order-data__heading,
             [data-name="order_notes_admin"],
-            .wooexp-body-covered .wrap_note_item {
+            .wooexp-body-covered .wrap_note_item,
+            .wooexp-body-covered .stamp_equipment {
                 margin-top: 0.5rem;
                 margin-bottom: 0.5rem;
             }
@@ -343,16 +344,16 @@ function get_order_export_layout() {
                  * Clear layout to leave only product data in product section
                  */
                 targetEl
-                    .find('.postbox-header, thead, .button, p:not(.wrap_note_item, .sales > p), .wc-order-refund-items, #order_line_items')
+                    .find('.postbox-header, thead, .button, p:not(.wrap_note_item, .stamp_equipment, .sales > p), .wc-order-refund-items, #order_line_items')
                     .remove();
 
                 targetEl.find('.wc-order-totals-items, #order_shipping_line_items, #order_fee_line_items, #order_refunds, .wc-order-add-item, .wc-order-bulk-actions, script')
                     .remove();
 
                 /**
-                 * Add item notes
+                 * Add item notes and Die/Laser file
                  */
-                targetEl.find('.wrap_note_item').each( function() {
+                targetEl.find('.wrap_note_item, .stamp_equipment').each( function() {
                     switchTextAreaWithSpan( $(this) );
                 });
 
