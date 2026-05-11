@@ -210,6 +210,7 @@ function get_order_export_layout() {
 
                 orderItems.each( function(i) {
                     const $this  = $(this);
+                    const $item_id = $this.data('order_item_id');
 
                     /** Use to break HTML in order to have each product block undivided on print pages */
                     $('<tbody class="item-wrap"></tbody>')
@@ -344,7 +345,7 @@ function get_order_export_layout() {
                  * Clear layout to leave only product data in product section
                  */
                 targetEl
-                    .find('.postbox-header, thead, .button, p:not(.wrap_note_item, .stamp_equipment, .sales > p), .wc-order-refund-items, #order_line_items')
+                    .find('.postbox-header, thead, .button, p:not(.wrap_note_item, .stamp_equipment, .sales > p, .pet_liner_wrapper), .wc-order-refund-items, #order_line_items')
                     .remove();
 
                 targetEl.find('.wc-order-totals-items, #order_shipping_line_items, #order_fee_line_items, #order_refunds, .wc-order-add-item, .wc-order-bulk-actions, script')
