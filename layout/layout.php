@@ -35,7 +35,7 @@ function get_order_export_layout() {
         }
 
         .item-direction {
-            width: 120px;
+            width: 150px;
 
             img {
                 display: block;
