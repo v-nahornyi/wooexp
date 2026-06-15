@@ -30,8 +30,15 @@ function get_order_export_layout() {
         }
 
         .item-direction-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             width: 100%;
             padding: 0 1.25rem;
+        }
+
+        .rewind-type {
+            font-weight: bold;
         }
 
         .item-direction {
@@ -198,6 +205,13 @@ function get_order_export_layout() {
                     'right': 'right',
                     'left': 'left'
                 }
+                this.rewindMap = {
+                    'top': 'Rewind 1',
+                    'bottom': 'Rewind 2',
+                    'right': 'Rewind 3',
+                    'left': 'Rewind 4'
+                }
+
                 this.activate()
             }
 
@@ -289,10 +303,12 @@ function get_order_export_layout() {
                 const $tr = $('<tr>');
                 $tr.addClass('direction-row');
 
-                const $direction_image = $(`<img class="item-direction" src="/wp-content/uploads/wooexp/rewind_images/Rewind_WhiteBopp_Gloss_Rect_${direction}.png" alt="Label direction">`);
                 const $dir_wrap = $('<div class="item-direction-block"></div>');
+                const $direction_image = $(`<img class="item-direction" src="/wp-content/uploads/wooexp/rewind_images/Rewind_WhiteBopp_Gloss_Rect_${direction}.png" alt="Label direction">`);
+                const $dir_rewind = $(`<div class="rewind-type">${this.rewindMap[direction]}</div>`);
 
                 $dir_wrap.append($direction_image);
+                $dir_wrap.append($dir_rewind);
                 $dir_wrap.appendTo($tr);
                 $tr.appendTo($item.parent());
 
