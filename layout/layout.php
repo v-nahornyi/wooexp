@@ -156,7 +156,7 @@ function get_order_export_layout() {
                 padding: 20px;
             }
 
-            .wooexp-customer,
+            .wooexp-heading-row,
             .wooexp-body-covered .woocommerce-order-data__heading,
             [data-name="order_notes_admin"],
             .wooexp-body-covered .wrap_note_item,
@@ -245,9 +245,17 @@ function get_order_export_layout() {
                 const customer = $('.wc-customer-search').find(':selected');
                 if (customer.length) {
                     const customerHtml = $(`<h3></h3>`);
-                    customerHtml.addClass('wooexp-customer');
+                    customerHtml.addClass(['wooexp-customer','wooexp-heading-row']);
                     customerHtml.html(`Customer details: ${customer.text()}`);
                     td.prepend(customerHtml);
+                }
+
+                const customerNoteText = $('#order_data .order_note').text();
+                if (customerNoteText) {
+                    const customerNoteHtml = $(`<h3></h3>`);
+                    customerNoteHtml.addClass('wooexp-heading-row');
+                    customerNoteHtml.html(customerNoteText);
+                    td.append(customerNoteHtml);
                 }
 
                 /**
